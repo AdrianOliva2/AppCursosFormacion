@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { Course } from '../classes/course';
+import { CoursesService } from '../services/courses.service';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +10,12 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  public courses?: Course[]
+
+  constructor(private router: Router, private coursesService: CoursesService) {}
+
+  public onClick() {
+    this.router.navigate(['gestion-cursos-propios'])
+  }
 
 }
