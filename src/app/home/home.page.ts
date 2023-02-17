@@ -12,10 +12,18 @@ export class HomePage {
 
   public courses?: Course[]
 
-  constructor(private router: Router, private coursesService: CoursesService) {}
+  constructor(private router: Router, private coursesService: CoursesService) {
+    coursesService.$courses()?.subscribe(courses => {
+      this.courses = courses
+    });
+  }
 
   public onClick() {
     this.router.navigate(['gestion-cursos-propios'])
+  }
+
+  public buyCourse(course: Course) {
+
   }
 
 }

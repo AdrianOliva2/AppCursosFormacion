@@ -1,18 +1,28 @@
 <ion-header>
-  <ion-toolbar>  
-    <ion-title>Comprar cursos</ion-title>
+  <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button (click)="onClick()" expand="block" fill="clear" shape="round">
-        Gestión
-      </ion-button>
+      <ion-menu-button></ion-menu-button>
     </ion-buttons>
+    <ion-title>Comprar cursos</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-grid fixed>
     <ion-row>
-      <ion-col size="3" *ngFor="let course of courses"></ion-col>
+      <ion-col size-sm="12" size-md="6" *ngFor="let course of courses">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>{{course.name}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-item>
+              <img [src]="course.image"/>
+            </ion-item>
+            <ion-button class="ion-margin" expand="block" color="primary" (click)="buyCourse(course)">Comprar por {{course.price}}€</ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>
