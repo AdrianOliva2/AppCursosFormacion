@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserAuthService } from './services/user-auth.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,14 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
+
+  constructor(private userAuth: UserAuthService, private router: Router) {}
+
+  public onLogout(): void {
+    this.userAuth.logout()
+    .subscribe(result => {
+      localStorage.removeItem('token');
+      this.router.navigate(['/login']);
+    });
+  }
 }

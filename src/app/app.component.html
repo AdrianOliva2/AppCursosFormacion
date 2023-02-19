@@ -25,6 +25,12 @@
             <ion-label>Gestionar mis cursos</ion-label>
           </ion-item>
         </ion-menu-toggle>
+        <ion-menu-toggle (click)="onLogout()" auto-hide="false">
+          <ion-item routerDirection="root" routerLink="login">
+            <ion-icon slot="start" name="log-out"></ion-icon>
+            <ion-label>Cerrar sesión</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
       </ion-list>
     </ion-content>
   </ion-menu>

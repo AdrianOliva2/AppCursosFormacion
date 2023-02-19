@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { HttpResponse } from '@capacitor/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { Observable, Subscription } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserAuthService {
 
-  constructor(private authClient: HttpClient) { }
+  constructor(private authClient: HttpClient, private router: Router) { }
 
   public async login(email: string, password: string): Promise<Boolean> {
     try {
@@ -17,6 +18,7 @@ export class UserAuthService {
       }).subscribe((res: any) => {
         if (res.token) {
           localStorage.setItem('token', res.token);
+          this.router.navigate(['/home']);
           return true;
         } else {
           return false;
@@ -32,6 +34,10 @@ export class UserAuthService {
         return false;
       }
     }
+  }
+
+  public logout(): Observable<any> {
+    return this.authClient.post('http://localhost:3000/users/logout', null);
   }
 
 }

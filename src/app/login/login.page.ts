@@ -29,9 +29,9 @@ export class LoginPage implements OnInit {
 
   public async login() {
     if (this.email.value !== '' || this.password.value !== '') {
-      await this.userAuthService.login(this.email.value, this.password.value).then((res: any) => {
-        this.router.navigate(['/home']);
-      }).catch(async (err: any) => {
+      await this.userAuthService.login(this.email.value, this.password.value)
+      .then()
+      .catch(async (err: any) => {
         console.log(err);
         const alert = this.alertController.create({
           header: 'Error',
@@ -39,8 +39,8 @@ export class LoginPage implements OnInit {
           message: 'Por favor, inténtelo de nuevo',
           buttons: ['OK'],
         });
-    
-        await alert.present();
+
+        (await alert).present();
       });
     }
   }
