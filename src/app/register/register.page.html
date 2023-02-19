@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row class="ion-margin-top">
+    <ion-col size="1"></ion-col>
+    <ion-col size="10">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Sign up</ion-card-title>
+        </ion-card-header>
+        <ion-card-content [formGroup]="form">
+          <ion-item>
+            <ion-label position="floating">Username</ion-label>
+            <ion-input type="text" [formControl]="username"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Email</ion-label>
+            <ion-input type="email" [formControl]="email"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Password</ion-label>
+            <ion-input type="password" [formControl]="password"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Confirm Password</ion-label>
+            <ion-input type="password" [formControl]="confirmPassword"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Birth date</ion-label>
+            <br/>
+            <ion-input type="date" [formControl]="birthDate"></ion-input>
+          </ion-item>
+          <ion-row>
+            <ion-col>
+              <ion-button expand="block" (click)="register()" [disabled]="!form.valid">Register</ion-button>
+            </ion-col>
+            <ion-col>
+              <ion-button expand="block" (click)="login()">Login</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-card-content> 
+      </ion-card>
+    </ion-col>
+    <ion-col size="1"></ion-col>
+  </ion-row>
+</ion-content>

@@ -29,6 +29,15 @@ const routes: Routes = [
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule),
     canActivate: [UserLoggedGuard]
   },
+  {
+    path: 'register',
+    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+  },
+  {
+    path: 'detalles-curso/:id',
+    loadChildren: () => import('./detalles-curso/detalles-curso.module').then( m => m.DetallesCursoPageModule)
+  },
+
 
 ];
 

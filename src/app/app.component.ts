@@ -12,10 +12,15 @@ export class AppComponent {
   constructor(private userAuth: UserAuthService, private router: Router) {}
 
   public onLogout(): void {
-    this.userAuth.logout()
-    .subscribe(result => {
+    try {
+      this.userAuth.logout()
+      .subscribe(result => {
+        localStorage.removeItem('token');
+        this.router.navigate(['/login']);
+      });
+    } catch {
       localStorage.removeItem('token');
       this.router.navigate(['/login']);
-    });
+    }
   }
 }

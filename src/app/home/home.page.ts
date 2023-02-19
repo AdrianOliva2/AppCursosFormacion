@@ -23,7 +23,8 @@ export class HomePage {
   }
 
   public buyCourse(course: Course) {
-
+    console.log(course)
+    this.router.navigate(['detalles-curso', course._id])
   }
 
 }
